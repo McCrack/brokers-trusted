@@ -1,0 +1,56 @@
+[blogPosts]
+pageNumber = "{{ :page }}"
+postsPerPage = 12
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "black"
+postPage = 404
+==
+
+{% set posts = blogPosts.posts %}
+
+
+<h1 class="text-left font-42 font-medium">Brokers to Avoid ❯</h1>
+<div class="feed black-list grid">
+    {% for post in posts %}
+    <a href="{{ post.slug }}" class="snippet flex-between-stretch flex-column">
+        <div class="preview">
+            <img src="{{ (post.featured_images|first).path }}" alt="">
+        </div>
+        <p class="post-title font-bold font-16">{{ post.title }}</p>
+        {#<p class="excerpt">{{ post.excerpt }}</p>#}
+        <div class="flex-between-center font-regular font-13">
+            <span>{{ post.published_at|date('d M, Y') }}</span>
+            <span class="link">READ ❯</span>
+        </div>
+    </a>
+    {% endfor %}
+
+    {% for post in posts %}
+    <a href="{{ post.slug }}" class="snippet flex-between-stretch flex-column">
+        <div class="preview">
+            <img src="{{ (post.featured_images|first).path }}" alt="">
+        </div>
+        <p class="post-title font-bold font-16">{{ post.title }}</p>
+        {#<p class="excerpt">{{ post.excerpt }}</p>#}
+        <div class="flex-between-center font-regular font-13">
+            <span>{{ post.published_at|date('d M, Y') }}</span>
+            <span class="link">READ ❯</span>
+        </div>
+    </a>
+    {% endfor %}
+
+    {% for post in posts %}
+    <a href="{{ post.slug }}" class="snippet flex-between-stretch flex-column">
+        <div class="preview">
+            <img src="{{ (post.featured_images|first).path }}" alt="">
+        </div>
+        <p class="post-title font-bold font-16">{{ post.title }}</p>
+        {#<p class="excerpt">{{ post.excerpt }}</p>#}
+        <div class="flex-between-center font-regular font-13">
+            <span>{{ post.published_at|date('d M, Y') }}</span>
+            <span class="link">READ ❯</span>
+        </div>
+    </a>
+    {% endfor %}
+</div>

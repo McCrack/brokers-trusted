@@ -1,0 +1,99 @@
+<div class="home-cover border-bottom-light">
+    <form class="slideshow" autocomplete="off">
+        <div class="slide active">
+            <img src="{{ 'assets/images/slide-1.jpg'|theme }}" alt="">
+            <div class="absolute top left right bottom">
+                <div class="container flex-center-start flex-wrap flex-column full-height font-42">
+                    <p class="font-large font-bold navy-txt my-0">
+                        1. THE EXPERT <span class="red-txt">GROWE</span><br> FINANCIAL ADVICE
+                    </p>
+                    <p class="font-18 my-20">
+                        Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis.<br>
+                        Vitae sit felis donec, suscipit tortor et sapien donec ac nec. Nam vel eu amet
+                    </p>
+                    <button class="btn red-bg white-txt border-none font-14 py-10 px-30 cursor-pointer hover-navy-bg">Find a Broker</button>
+                </div>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="{{ 'assets/images/slide-2.jpg'|theme }}" alt="">
+            <div class="absolute top left right bottom">
+                <div class="container flex-center-start flex-wrap flex-column full-height font-42">
+                    <p class="font-large font-bold navy-txt my-10">
+                        2. THE EXPERT <span class="red-txt">GROWE</span><br> FINANCIAL ADVICE
+                    </p>
+                    <p class="font-18 my-10">
+                        Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis.<br>
+                        Vitae sit felis donec, suscipit tortor et sapien donec ac nec. Nam vel eu amet
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="{{ 'assets/images/slide-3.jpg'|theme }}" alt="">
+            <div class="absolute top left right bottom">
+                <div class="container flex-center-start flex-wrap flex-column full-height font-42">
+                    <p class="font-large font-bold navy-txt my-10">
+                        3. THE EXPERT <span class="red-txt">GROWE</span><br> FINANCIAL ADVICE
+                    </p>
+                    <p class="font-18 my-10">
+                        Lorem ipsum dolor sit amet, ligula magna at etiam aliquip venenatis.<br>
+                        Vitae sit felis donec, suscipit tortor et sapien donec ac nec. Nam vel eu amet
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-20 right-20 z-index-3 font-none p-30">
+            <label class="slide-point">
+                <input type="radio" name="advantages" hidden checked>
+                <hr class="inline-block">
+            </label>
+            <label class="slide-point">
+                <input type="radio" name="advantages" hidden>
+                <hr class="inline-block">
+            </label>
+            <label class="slide-point">
+                <input type="radio" name="advantages" hidden>
+                <hr class="inline-block">
+            </label>
+        </div>
+        <script>
+            (slider => {
+                var interval;
+                let slides = slider.querySelectorAll('.slide');
+                let points = slider.querySelectorAll('.slide-point > input');
+                let current = 0;
+                slider.onchange = event => {
+                    clearInterval(interval)
+                    points.forEach((point, i) => {
+                        if (point.contains(event.target)) {
+                            setSlide(i);
+                        }
+                    })
+                }
+                function setSlide(slide) {
+                    slides[current].classList.toggle('active', false);
+                    slides[current].classList.toggle('hide', true);
+                    slides[slide].classList.toggle('active', true);
+                    points[slide].checked = true;
+                    setTimeout(() => {
+                        slides[current].classList.toggle('hide', false);
+                        current = slide;
+                    }, 600)
+                }
+                function autoplay () {
+                    interval = setInterval(() => {
+                        if (current + 1 >= slides.length) {
+                            setSlide(0);
+                        } else {
+                            setSlide(current + 1);
+                        }
+                    }, 6000);
+                }
+
+                autoplay();
+            })(document.currentScript.parentNode)
+        </script>
+    </form>
+</div>

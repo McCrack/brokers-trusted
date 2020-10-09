@@ -1,0 +1,319 @@
+
+@import "theme/variables";
+@import "theme/fonts";
+@import "theme/layouts";
+
+.navy-bg {
+    background-color: @navy;
+}
+.red-bg {
+    background-color: @red;
+}
+.silver-bg {
+    background-color: @silver;
+}
+.gray-bg {
+    background-color: @gray;
+}
+.light-bg {
+    background-color: @light;
+}
+.dark-bg {
+    background-color: @dark;
+}
+.pink-bg {
+    background-color: @pink;
+}
+
+.navy-txt {
+    color: @navy;
+}
+.red-txt {
+    color: @red;
+}
+.silver-txt {
+    color: @silver;
+}
+.gray-txt {
+    color: @gray;
+}
+.light-txt {
+    color: @light;
+}
+.dark-txt {
+    color: @dark;
+}
+
+.hover-underline:hover {
+    text-decoration: underline;
+}
+.hover-navy-bg:hover {
+    background-color: @navy;
+}
+.hover-red-bg:hover {
+    background-color: @red;
+}
+.hover-silver-bg:hover {
+    background-color: @silver;
+}
+.hover-gray-bg:hover {
+    background-color: @gray;
+}
+.hover-dark-bg:hover {
+    background-color: @dark;
+}
+
+.hover-navy-txt:hover {
+    color: @navy;
+}
+.hover-red-txt:hover {
+    color: @red;
+}
+.hover-silver-txt:hover {
+    color: @silver;
+}
+.hover-gray-txt:hover {
+    color: @gray;
+}
+.hover-dark-txt:hover {
+    color: @dark;
+}
+
+.shadow {
+    box-shadow: 10px 10px 16px -10px rgba(0,0,0, .4);
+}
+.shadow-x {
+    box-shadow: 10px 0 16px -10px rgba(0,0,0, .4);
+}
+.shadow-y {
+    box-shadow: 0 10px 16px -10px rgba(0,0,0, .4);
+}
+
+.logo:first-letter {
+    color: @red;
+    font-size: 42px;
+}
+
+.btn {
+    display: inline-block;
+}
+
+.main-nav {
+    li {
+        color: inherit;
+        padding: 0 20px;
+        line-height: 64px;
+        border-bottom: 3px solid transparent;
+        &:hover {
+            color: @red;
+        }
+        &.active {
+            color: @red;
+            border-color: @red;
+            pointer-events: none;
+        }
+    }
+}
+.categories-nav {
+    li {
+        color: inherit;
+        padding: 0 10px;
+        line-height: 42px;
+        border-bottom: 3px solid transparent;
+        &:hover,
+        &.active {
+            color: @red;
+        }
+    }
+}
+
+.cover {
+    height: 40vh;
+}
+.pagination {
+    a {
+        width: 30px;
+        line-height: 30px;
+        font-weight: 500;
+        display: inline-block;
+        border: 1px solid @gray;
+        vertical-align: top;
+        &:not(.active) {
+            color: @navy;
+            background-color: white;
+            &:hover {
+                color: white;
+                background-color: @red;
+                border-color: @red;
+            }
+        }
+        &.active {
+            color: white;
+            background-color: @navy;
+            border-color: @navy;
+            pointer-events: none;
+        }
+    }
+}
+
+
+.slideshow {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    height: 78vh;
+
+    text-shadow: 0 0 8px rgba(255,255,255, .5);
+    .slide {
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: absolute;
+        transition: all .8s linear;
+
+        & > div {
+            transition: all 1s cubic-bezier(0, 0, 0.3, 1.3) .5s;
+        }
+
+        &:not(.active) {
+            left: 140%;
+            opacity: 0;
+            z-index: -1;
+            & > div {
+                transform: translateX(80%);
+                opacity: 0;
+            }
+        }
+        &.hide {
+            left: -140%;
+        }
+        &.active {
+            left: 0;
+            opacity: 1;
+            & > div {
+                transform: translateX(1);
+                opacity: 1;
+            }
+        }
+
+        &>img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    .slide-point {
+        margin: 0 2px;
+        cursor: pointer;
+        hr {
+            height: 10px;
+            width: 20px;
+            border: 1px solid #aaaaaa;
+        }
+        input:not(:checked) + hr {
+            background-color: @navy;
+        }
+        input:checked + hr {
+            background-color: @red;
+        }
+    }
+}
+
+.top-feed {
+    grid-row-gap: 25px;
+    grid-column-gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    .top-snippet {
+        display:flex;
+        align-items: stretch;
+        position: relative;
+        &::before {
+            content: "";
+            width: 68px;
+            height: 100%;
+        }
+        & > img {
+            left: 0;
+            top: 50%;
+            padding: 20px;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            border-radius: 50%;
+            background-color: @red;
+            border: 2px solid white;
+        }
+        & > div {
+            padding: 50px 30px 50px 50px;
+            transition: background-color .5s;
+            box-shadow: 10px 10px 10px -8px rgba(0,0,0, .2);
+        }
+        &:hover {
+            & > div {
+                color: white;
+                background-color: @navy;
+            }
+            & > img {
+                background-color: @navy;
+            }
+        }
+    }
+}
+
+.feed {
+    grid-gap: 16px;
+    grid-template-columns: repeat(4, 1fr);
+    .snippet {
+        color: @dark;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 8px 8px 18px -10px rgba(0,0,0, .3);
+        & > .preview {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            border-bottom: 1px solid #cccccc;
+            img {
+                width: 100%;
+                height: 100%;
+                padding: 30px;
+                object-fit: contain;
+                box-sizing: border-box;
+                transform: scale(1.1);
+                transition: transform .4s;
+            }
+        }
+        span {
+            color: @gray;
+            border-top: 1px solid transparent;
+        }
+        &:hover {
+            color: @navy;
+            .preview > img {
+                transform: scale(.8);
+            }
+            span {
+                color: @navy;
+                font-weight: 500;
+                border-color: @gray;
+            }
+        }
+    }
+}
+
+.black-list {
+    .snippet {
+        border-top: 4px solid @red;
+
+    }
+}
+.white-list {
+    .snippet {
+        border-top: 4px solid @navy;
+    }
+}
+.copyright {
+    background-color: #001f44;
+}

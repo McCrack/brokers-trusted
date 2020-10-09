@@ -1,0 +1,31 @@
+==
+function onStart()
+{
+$this['backendUrl'] = Backend::url('/');
+}
+==
+<div class="navy-bg white-txt">
+    <div class="container flex-between-center">
+        <!-- Logo -->
+        <a href="/" class="logo"><img src="'assets/images/logo.png'|theme" alt="Logo" class="font-bold font-20 p-10"></a>
+
+        <!-- Main Menu -->
+        <nav class="" role="navigation">
+            <ul class="main-nav flex-end-center none-marker p-0 m-0 font-medium">
+                <li class="font-16 {% if this.page.id == 'home' %}active{% endif %}"><a href="{{ 'home'|page }}">Home</a></li>
+                <li class="font-16 {% if this.page.id == 'recover-your-funds' %}active{% endif %}"><a href="{{ 'ajax'|page }}">Recover Your Funds</a></li>
+                <li class="font-16 {% if this.page.id == 'report-a-scam' %}active{% endif %}"><a href="{{ 'plugins'|page }}">Report a Scam</a></li>
+                <li class="font-16 {% if this.page.id == 'education' %}active{% endif %}"><a href="{{ backendUrl }}" target="backend">Education</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<div class="white-bg-9 shadow-y sticky top z-index-1">
+    <nav class="container">
+        <ul class="categories-nav flex-end-center none-marker px-10 m-0 font-medium">
+            <li class="font-15 {% if this.page.id == 'brokers-to-avoid' %}active{% endif %}"><a href="{{ 'home'|page }}">Brokers to Avoid </a></li>
+            <li class="font-15 {% if this.page.id == 'regulated-brokers' %}active{% endif %}"><a href="{{ 'ajax'|page }}">Regulated Brokers</a></li>
+        </ul>
+    </nav>
+</div>
+
