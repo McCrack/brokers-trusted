@@ -1,5 +1,55 @@
-title = "post"
-url = "/post"
+title = "Blog Post"
+url = "/:slug"
 layout = "default"
 is_hidden = 0
+
+[blogPost]
+slug = "{{ :slug }}"
+categoryPage = "blog/category"
+
+[commentsPost]
 ==
+<?php
+function onEnd()
+{
+    if (isset($this->post)){
+        $this->page->title = $this->post->title;
+    }
+}
+?>
+==
+<div class="p-10">
+    {% partial 'top-feed' %}
+</div>
+<div class="container">
+    <div class="wrapper">
+        <div class="p-30 flex-grow">
+            <article class="post">
+                <header>
+                    <img src="{{ (post.featured_images|first).path }}" alt="" class="quarter-width">
+                    <h1>{{ post.title }}</h1>
+                </header>
+                <div class="content px-20">
+                    {{ post.content_html|raw }}
+                    <div class="py-20 px-10 flex-between-center">
+                        <div>
+                            <span class="font-bold mr-10">{{ post.user.first_name }} {{ post.user.last_name }}</span>
+                            <span>{{ post.published_at|date('d M, Y') }}</span>
+                        </div>
+                        <div>
+                            <a href="" class="inline-block valign-middle"><img src="{{ 'assets/images/whatsapp.png'|theme }}" alt=""></a>
+                            <a href="" class="inline-block valign-middle mx-5"><img src="{{ 'assets/images/messenger.png'|theme }}" alt=""></a>
+                            <button class="btn fb-btn border-none cursor-pointer">SHARE</button>
+                        </div>
+                    </div>
+
+                    {% component 'commentsPost' %}
+
+                </div>
+            </article>
+        </div>
+        <aside>
+
+        </aside>
+    </div>
+</div>

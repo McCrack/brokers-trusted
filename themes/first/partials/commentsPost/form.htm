@@ -1,0 +1,41 @@
+<div id="wrap-comment-form">
+    <div class="" id="comment-form">
+
+        <h2 class="comment-reply-title">Add comment
+            <small><a onclick="Comment.cancel()" style="display: none;" rel="nofollow" id="cancel-comment-reply-link"
+                      title="Cancel reply">×</a>
+            </small>
+        </h2>
+        <form>
+            <!-- Content Field -->
+            <div class="my-5">
+                <textarea placeholder="Leave a comment ..." class="full-width" id="comment-text" name="content"
+                          cols="50" rows="10"></textarea>
+            </div>
+            <div id="comment_flash_message"></div>
+            {% if(user == false) %}
+            <!-- Name Field -->
+            <div class="my-5">
+                <input placeholder="Name" class="full-width" name="author" type="text">
+            </div>
+
+            <!-- Email Field -->
+            <div class="my-5">
+                <input placeholder="Email" class="full-width" name="email" type="text">
+            </div>
+            {% endif %}
+            <input name="post_id" type="hidden" value="{{__SELF__.post_id}}">
+            <div class="flex-between-center my-5">
+                <div>
+                    {% if (__SELF__.settings.recaptcha_enabled) %}
+                    <div class="g-recaptcha" data-sitekey="{{ __SELF__.settings.site_key }}"></div>
+                    {% endif %}
+                </div>
+                <!-- Submit Field -->
+                <button type="submit" class="btn red-bg white-txt border-none py-10 px-20" onclick="Comment.saveButton(event)">Comment</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+

@@ -97,6 +97,34 @@
 .btn {
     display: inline-block;
 }
+.fb-btn {
+    color: white;
+    padding: 8px 20px 8px 8px;
+    background-color: @facebook;
+}
+.fb-btn:before {
+    content: "";
+    width: 26px;
+    height: 18px;
+    vertical-align: top;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('/themes/first/assets/images/facebook.png');
+}
+
+.comments {
+    display: block;
+    .comment {
+        display: block;
+    }
+    ul {
+        display: block;
+        li {
+            display: block;
+        }
+    }
+}
 
 .main-nav {
     li {
@@ -123,6 +151,33 @@
         &:hover,
         &.active {
             color: @red;
+        }
+    }
+}
+
+.wrapper {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: auto 380px;
+
+    aside {
+
+    }
+}
+.post {
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 720px;
+    header {
+        display: flex;
+        align-items: stretch;
+        img {
+            width: 320px;
+            margin: 20px;
+            object-fit: contain;
+        }
+        h1 {
+            font-size: 36px;
         }
     }
 }
